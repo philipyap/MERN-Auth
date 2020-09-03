@@ -6,9 +6,8 @@ require('dotenv').config()
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
 const mongoose = require('mongoose')
-const passport = require('passport')
-const { deserializeUser } = require('passport')
-//const User = mongoose.model('User')
+const User = mongoose.model('User')
+const db = require('../models')
 
 const options = {}
 //jwtFromRequest (required) function that accepts a request as the only params and return either the JWT as a string or null
@@ -18,7 +17,7 @@ options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 options.secretOrKey = process.env.JWT_SECRET
 
 module.exports = (passport)=>{
-    passport.use(new JwtStrategy(option,(jwt_payload, done)=>{
+    passport.use(new JwtStrategy(options, (jwt_payload, done)=>{
         User.findById(jwt_payload.id)
         .then(user =>{
             if(user){
