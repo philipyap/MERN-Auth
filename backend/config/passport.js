@@ -11,12 +11,15 @@ const { deserializeUser } = require('passport')
 //const User = mongoose.model('User')
 
 const options = {}
+//jwtFromRequest (required) function that accepts a request as the only params and return either the JWT as a string or null
+
+// fromAuthHeaderAsBeareToken() creates an extractor that looks for the JWT in the auth header
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 options.secretOrKey = process.env.JWT_SECRET
 
 module.exports = (passport)=>{
     passport.use(new JwtStrategy(option,(jwt_payload, done)=>{
-        deserializeUser.findById(jwt_payload.id)
+        User.findById(jwt_payload.id)
         .then(user =>{
             if(user){
                 //If the user is found, return null(for error)and user
