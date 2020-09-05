@@ -6,7 +6,10 @@ const About =()=> {
             <h1>About</h1>
             <p>It is about us</p>
             <p>
-                Hi there
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Tempore dolorum excepturi, pariatur dolore fuga perferendis 
+                mollitia deserunt a voluptas assumenda! Consequatur beatae qui 
+                dolorem tempora possimus accusantium, fugit eius quidem?
             </p>
         </div>
     )

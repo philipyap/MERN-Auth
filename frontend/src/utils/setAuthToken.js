@@ -6,7 +6,7 @@ import axios from 'axios'
 const setAuthToken = token =>{
     if(token){
         //apply thet token to every request header
-        axious.defaults.headers.common['Authorization']=token
+        axios.defaults.headers.common['Authorization']=token
         console.log(axios.defaults.headers.common)
     } else {
         delete axios.defaults.headers.common['Authorization']
